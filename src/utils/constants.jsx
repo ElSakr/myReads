@@ -1,9 +1,14 @@
-import { Status } from "../Models/Shared";
-import { PATH_NAME } from "../Routes/PathNames";
-
-export const MenuItems = [
+export const SHELFS = [
   {
-    lable: "Home",
-    route: PATH_NAME.HOME,
+    title: "Currently Reading",
+    key: "currentlyReading",
+  },
+  {
+    title: "Want To Read",
+    key: "wantToRead",
+  },
+  {
+    title: "Read",
+    key: "read",
   },
 ];
