@@ -10,7 +10,7 @@ const Shelf = ({ booksList, id, changeList }) => {
     <div className="bookshelf" key={id}>
       <div className="bookshelf-books">
         <ol className="books-grid">
-          {booksList.length > 0 &&
+          {booksList.length > 0 ? (
             booksList.map((book) => (
               <p key={book.id}>
                 <Book
@@ -18,7 +18,10 @@ const Shelf = ({ booksList, id, changeList }) => {
                   changeShelf={(changeShelf) => updateShelf(changeShelf)}
                 />
               </p>
-            ))}
+            ))
+          ) : (
+            <p>No Books</p>
+          )}
         </ol>
       </div>
     </div>
