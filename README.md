@@ -1,1 +1,1 @@
-# myReads
+# react-starter-kit
