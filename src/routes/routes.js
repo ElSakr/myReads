@@ -15,6 +15,12 @@ const Routes = () => {
           path={PATH_NAME.HOME}
           exact
         />
+
+        <PrivateRoute
+          component={() => <LazyComponent.Search />}
+          path={PATH_NAME.SEARCH}
+          exact
+        />
         {/* Public routes that doesn't need any auth */}
         {/* <LazyComponent.SignIn path={PATH_NAME.SIGN_IN} exact /> */}
       </Switch>

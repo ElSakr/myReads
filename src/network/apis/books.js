@@ -12,8 +12,11 @@ const updateBook = async (id, shelf) => {
   return await axiosInstance.put(`/books/${id}`, JSON.stringify({ shelf }));
 };
 
-const search = async (query) => {
-  return await axiosInstance.post("/search", query);
+const search = async (query, maxResults) => {
+  return await axiosInstance.post(
+    "/search",
+    JSON.stringify({ query, maxResults })
+  );
 };
 
 export { getAllBooks, getBook, updateBook, search };

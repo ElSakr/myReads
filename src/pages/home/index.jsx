@@ -4,11 +4,11 @@ import AppHeader from "./../../components/header";
 import Shelf from "./../../components/shelf";
 import { SHELFS } from "./../../utils/constants";
 import { getAllBooks } from "./../../network/apis/books";
+
 const Home = () => {
-  const { Content, Footer } = Layout;
+  const { Content } = Layout;
   const { Panel } = Collapse;
   const [booksList, setBooksList] = useState([]);
-  const [isBookUpdated, setBookUpdate] = useState(false);
   useEffect(() => {
     getAllBooks().then((res) => setBooksList(res?.data?.books));
   }, []);
@@ -29,6 +29,12 @@ const Home = () => {
           className="site-layout-background"
           style={{ padding: 24, minHeight: 380 }}
         >
+          <div className="search-wrapper my-5">
+            <a className="py-5" href="/search">
+              Search on Books
+            </a>
+          </div>
+
           <Collapse defaultActiveKey={[SHELFS[0].key]}>
             {SHELFS.length > 0 &&
               SHELFS.map((shelf) => (
@@ -45,9 +51,6 @@ const Home = () => {
           </Collapse>
         </div>
       </Content>
-      {/* <Footer style={{ textAlign: "center" }}>
-        My Reads ©2021 Created by Amr Sakr
-      </Footer> */}
     </Layout>
   );
 };

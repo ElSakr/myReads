@@ -4,7 +4,22 @@ import PropTypes from "prop-types";
 import { updateBook } from "./../../network/apis/books";
 
 const Book = ({ book, changeShelf }) => {
-  const renderBookAuthors = (authors) => authors.join(" , ");
+  const renderBookAuthors = (authors) => {
+    switch (authors) {
+      case !authors:
+        return;
+
+      case authors?.length > 1:
+        return authors.join(" , ");
+
+      case authors?.length === 0:
+        return authors[0];
+
+      default:
+        return "";
+    }
+  };
+
   const handleShelfChange = (e) => {
     updateBook(book?.id, e.target.value);
     changeShelf(e.target.value);
@@ -29,16 +44,19 @@ const Book = ({ book, changeShelf }) => {
   };
 
   return (
-    <>
-      <Card title={book?.title} bordered={true} extra={moveTo()}>
-        <p>{book?.description}</p>
-        <Divider />
-        <p>
-          <span style={{ marginRight: "5px" }}>Authors:</span>
-          {renderBookAuthors(book.authors)}
-        </p>
-      </Card>
-    </>
+    <Card
+      title={book?.title}
+      bordered={true}
+      extra={changeShelf && moveTo()}
+      className="my-5"
+    >
+      <p>{book?.description}</p>
+      <Divider />
+      <p>
+        <span style={{ marginRight: "5px" }}>Authors:</span>
+        {renderBookAuthors(book?.authors)}
+      </p>
+    </Card>
   );
 };
 
