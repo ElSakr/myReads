@@ -8,9 +8,15 @@ const Home = () => {
   const { Content, Footer } = Layout;
   const { Panel } = Collapse;
   const [booksList, setBooksList] = useState([]);
+  const [isBookUpdated, setBookUpdate] = useState(false);
   useEffect(() => {
     getAllBooks().then((res) => setBooksList(res?.data?.books));
   }, []);
+
+  const updateBooksList = () => {
+    setBooksList([]);
+    getAllBooks().then((res) => setBooksList(res?.data?.books));
+  };
 
   return (
     <Layout>
@@ -32,15 +38,16 @@ const Home = () => {
                     booksList={booksList.filter(
                       (books) => books.shelf === shelf.key
                     )}
+                    changeList={(changeShefl) => updateBooksList(changeShefl)}
                   />
                 </Panel>
               ))}
           </Collapse>
         </div>
       </Content>
-      <Footer style={{ textAlign: "center" }}>
+      {/* <Footer style={{ textAlign: "center" }}>
         My Reads ©2021 Created by Amr Sakr
-      </Footer>
+      </Footer> */}
     </Layout>
   );
 };

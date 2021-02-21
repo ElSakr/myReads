@@ -8,8 +8,8 @@ const getBook = async (id) => {
   return await axiosInstance.get(`/books/${id}`);
 };
 
-const updateBook = async (book, shelf) => {
-  return await axiosInstance.put(`/books/${book.id}`, shelf);
+const updateBook = async (id, shelf) => {
+  return await axiosInstance.put(`/books/${id}`, JSON.stringify({ shelf }));
 };
 
 const search = async (query) => {
