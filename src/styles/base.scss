@@ -1,2 +1,10 @@
 @import "bootstrap/scss/bootstrap";
 @import "~antd/dist/antd.css";
+.content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  p {
+    max-width: 50%;
+  }
+}
