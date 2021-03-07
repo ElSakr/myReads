@@ -14,7 +14,7 @@ const Search = ({ allBooks }) => {
         if (res?.data?.books.length) {
           const filterdData = res?.data?.books?.filter((el) =>
             allBooks?.allBooks.map((item) => {
-              if (el.id == item.id) {
+              if (el.id === item.id) {
                 el.shelf = item.shelf;
               } else {
                 el.item = "none";
@@ -59,12 +59,14 @@ const Search = ({ allBooks }) => {
           <div className="books-container">
             {list?.length > 0 ? (
               list.map((book) => (
-                <Book
-                  book={book}
-                  changeShelf={(changeShelf) =>
-                    updateShelf(book?.id, changeShelf)
-                  }
-                />
+                <div key={book?.id}>
+                  <Book
+                    book={book}
+                    changeShelf={(changeShelf) =>
+                      updateShelf(book?.id, changeShelf)
+                    }
+                  />
+                </div>
               ))
             ) : (
               <p>No results!</p>

@@ -5,7 +5,6 @@ import PrivateRoute from "./privateRoute";
 import { PATH_NAME } from "./pathNames";
 
 const Routes = (allBooks) => {
-  console.log("all", allBooks);
   return (
     // <Suspense fallback={<Loader />}>
     <Suspense fallback={"Loading ..."}>

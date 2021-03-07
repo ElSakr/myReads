@@ -9,6 +9,9 @@ function App() {
 
   useEffect(() => {
     getAllBooks().then((res) => setBooksList(res?.data?.books));
+    return () => {
+      setBooksList([]);
+    };
   }, []);
 
   return (

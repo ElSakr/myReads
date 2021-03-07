@@ -9,6 +9,7 @@ export const axiosInstance = axios.create({
   baseURL: "https://reactnd-books-api.udacity.com",
   headers: {
     "Content-Type": "application/json",
+    "Set-Cookie": "HttpOnly;Secure;SameSite=Strict",
     Accept: "application/json",
     Authorization: token,
   },
